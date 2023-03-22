@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.generation.kodeco</groupId>
 	<artifactId>kod-eco</artifactId>
-	<version>2.7.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>kod-eco</name>
 	<description>Projeto Integrador Grupo 3</description>
 	<properties>
