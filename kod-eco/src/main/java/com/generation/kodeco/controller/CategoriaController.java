@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+
 import com.generation.kodeco.model.Categoria;
+import com.generation.kodeco.model.Produto;
 import com.generation.kodeco.repository.CategoriaRepository;
 
 import jakarta.validation.Valid;
@@ -41,7 +43,8 @@ public class CategoriaController {
 		return categoriaRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-
+	
+	
 	@PostMapping()
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));

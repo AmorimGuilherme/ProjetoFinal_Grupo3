@@ -1,15 +1,20 @@
-/*package com.generation.kodeco.model;
+package com.generation.kodeco.model;
 
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -25,16 +30,20 @@ public class Produto {
 	private String nome;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING)
-	@Size(min = 1)
+	@DecimalMin(value = "0.01") 
+	@DecimalMax (value = "99999.99")
     private BigDecimal preco;
 
 	@NotBlank
 	@Size(min = 1, max = 1000)
 	private String foto;
 	
-	@NotBlank
+	@NotNull
 	private int estoque;
 	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
 
 	public Long getId() {
 		return id;
@@ -75,7 +84,15 @@ public class Produto {
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	
 	
 	
-}*/
+}
