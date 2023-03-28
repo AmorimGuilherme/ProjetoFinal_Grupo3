@@ -20,30 +20,34 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "tb_produtos")
 public class Produto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; 
-	
+	private Long id;
+
 	@NotBlank
 	@Size(min = 1, max = 255)
 	private String nome;
-	
-	@JsonFormat(shape=JsonFormat.Shape.STRING)
-	@DecimalMin(value = "0.01") 
-	@DecimalMax (value = "99999.99")
-    private BigDecimal preco;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@DecimalMin(value = "0.01")
+	@DecimalMax(value = "99999.99")
+	private BigDecimal preco;
 
 	@NotBlank
 	@Size(min = 1, max = 1000)
 	private String foto;
-	
+
 	@NotNull
 	private int estoque;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
+
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -92,7 +96,5 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-	
-	
+
 }
