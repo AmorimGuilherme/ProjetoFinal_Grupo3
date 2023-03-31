@@ -33,8 +33,10 @@ public class BasicSecurityConfig {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable().cors();
 
 		http.authorizeHttpRequests((auth) -> auth.requestMatchers("/usuarios/logar").permitAll()
-				.requestMatchers("/usuarios/cadastrar").permitAll().requestMatchers(HttpMethod.GET, "/produtos")
-				.permitAll().requestMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated()).httpBasic();
+				.requestMatchers("/usuarios/cadastrar").permitAll()
+				.requestMatchers(HttpMethod.GET, "/produtos").permitAll()
+				.requestMatchers(HttpMethod.OPTIONS).permitAll()
+				.anyRequest().authenticated()).httpBasic();
 
 		return http.build();
 

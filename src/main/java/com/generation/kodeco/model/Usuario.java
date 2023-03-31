@@ -15,10 +15,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name = "tb_usuarios")
-
-public class Usuario {
+	@Entity
+	@Table(name = "tb_usuarios")
+	public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +40,7 @@ public class Usuario {
 	private String foto;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("Usuario")
+	@JsonIgnoreProperties("usuario")
 	private List<Produto> produto;
 
 	public Long getId() {
